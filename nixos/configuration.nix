@@ -17,7 +17,7 @@
       };
       grub = {
         enable = true;
-	      device = "/dev/disk/by-uuid/a42b192b-b02c-4e1f-91f0-0cddc181f65d";
+	      device = "/dev/disk/by-uuid/";
 	      efiSupport = true;
 	      theme = "${pkgs.sleek-grub-theme.override { withStyle = "dark"; }}";
         useOSProber = true;
@@ -104,7 +104,6 @@
 
     xserver = {
       enable = true;
-      videoDrivers = [ "nvidia" ];
       xkb = {    
         layout = "at";
         variant = "nodeadkeys";
@@ -137,25 +136,6 @@
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
-    };
-    nvidia = {
-      modesetting = {
-        enable = true;
-      };
-      powerManagement = {
-        enable = false;
-        finegrained = false;
-      };
-      open = false;
-      nvidiaSettings = true;
-      prime = {
-        offload = {
-          enable = true;
-          enableOffloadCmd = true;
-        };
-        amdgpuBusId = "PCI:35:0:0";
-        nvidiaBusId = "PCI:1:0:0";
-      };
     };
   };
 

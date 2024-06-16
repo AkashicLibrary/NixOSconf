@@ -12,28 +12,22 @@
   # Bootloader.
   boot = {
     loader = {
-      systemd-boot = {
-      	enable = false;
-      };
+      systemd-boot = { enable = false; };
       grub = {
         enable = true;
-	      device = "/dev/disk/by-uuid/a42b192b-b02c-4e1f-91f0-0cddc181f65d";
-	      efiSupport = true;
-	      theme = "${pkgs.sleek-grub-theme.override { withStyle = "dark"; }}";
+        device = "/dev/disk/by-uuid/a42b192b-b02c-4e1f-91f0-0cddc181f65d";
+        efiSupport = true;
+        theme = "${pkgs.sleek-grub-theme.override { withStyle = "dark"; }}";
         useOSProber = true;
-	      splashImage = null;
+        splashImage = null;
       };
-      efi = {
-      	canTouchEfiVariables = true;
-      };
+      efi = { canTouchEfiVariables = true; };
     };
   };
 
   networking = {
     hostName = "cynthicnix"; # Define your hostname.
-    networkmanager = {
-      enable = true;
-    };
+    networkmanager = { enable = true; };
   };
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -44,9 +38,7 @@
   # Enable networking
 
   # Set your time zone.
-  time = {
-    timeZone = "Europe/Vienna";
-  };
+  time = { timeZone = "Europe/Vienna"; };
 
   # Select internationalisation properties.
   i18n = {
@@ -65,17 +57,11 @@
   };
 
   services = {
-    flatpak = {
-      enable = true;
-    };
+    flatpak = { enable = true; };
 
-    emacs = {
-      enable = true;
-    };
+    emacs = { enable = true; };
 
-    supergfxd = {
-      enable = true;
-    };
+    supergfxd = { enable = true; };
 
     ollama = {
       enable = true;
@@ -88,16 +74,14 @@
     displayManager = {
       sddm = {
         enable = true;
-	      wayland = {
-	        enable = true;
-	      };
-	      theme = "catppuccin-mocha";
+        wayland = { enable = true; };
+        theme = "catppuccin-mocha";
       };
     };
 
     desktopManager = {
       plasma6 = {
-	      enable = true;
+        enable = true;
         enableQt5Integration = true;
       };
     };
@@ -105,43 +89,34 @@
     xserver = {
       enable = true;
       videoDrivers = [ "nvidia" ];
-      xkb = {    
+      xkb = {
         layout = "at";
         variant = "nodeadkeys";
       };
     };
 
-    printing = {
-      enable = true;
-    };
+    printing = { enable = true; };
 
     pipewire = {
       enable = true;
       alsa = {
         enable = true;
-	      support32Bit = true;
+        support32Bit = true;
       };
-      pulse = {
-        enable = true;
-      };
+      pulse = { enable = true; };
     };
   };
 
-
   # Enable sound with pipewire.
   hardware = {
-    pulseaudio = {
-      enable = false;
-    };
+    pulseaudio = { enable = false; };
     opengl = {
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
     };
     nvidia = {
-      modesetting = {
-        enable = true;
-      };
+      modesetting = { enable = true; };
       powerManagement = {
         enable = false;
         finegrained = false;
@@ -159,18 +134,12 @@
     };
   };
 
-  security = {
-    rtkit = {
-      enable = true;
-    };
-  };
+  security = { rtkit = { enable = true; }; };
 
-  swapDevices = [
-    {
-      device = "/swapfile";
-      size = 32 * 1024;
-    }
-  ];
+  swapDevices = [{
+    device = "/swapfile";
+    size = 32 * 1024;
+  }];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users = {
@@ -179,10 +148,11 @@
         isNormalUser = true;
         description = "Cynthia";
         extraGroups = [ "networkmanager" "wheel" ];
-        packages = with pkgs; [
-          kdePackages.kate
-        #  thunderbird
-        ];
+        packages = with pkgs;
+          [
+            kdePackages.kate
+            #  thunderbird
+          ];
       };
     };
     defaultUserShell = pkgs.zsh;
@@ -190,15 +160,9 @@
 
   # Install firefox.
   programs = {
-    virt-manager = {
-      enable = true;
-    };
+    virt-manager = { enable = true; };
 
-    gnupg = {
-      agent = {
-        enable = true;
-      };
-    };
+    gnupg = { agent = { enable = true; }; };
 
     nh = {
       enable = true;
@@ -208,9 +172,7 @@
       };
     };
 
-    zsh = {
-      enable = true;
-    };
+    zsh = { enable = true; };
 
     java = {
       enable = true;
@@ -219,21 +181,11 @@
 
     steam = {
       enable = true;
-      remotePlay = {
-        openFirewall = true;
-      };
-      dedicatedServer = {
-        openFirewall = true;
-      };
-      extest = {
-        enable = true;
-      };
-      localNetworkGameTransfers = {
-        openFirewall = true;
-      };
-      extraCompatPackages = with pkgs; [
-        proton-ge-bin
-      ];
+      remotePlay = { openFirewall = true; };
+      dedicatedServer = { openFirewall = true; };
+      extest = { enable = true; };
+      localNetworkGameTransfers = { openFirewall = true; };
+      extraCompatPackages = with pkgs; [ proton-ge-bin ];
     };
 
     neovim = {
@@ -241,8 +193,71 @@
       defaultEditor = true;
     };
 
-    firefox = {
+    firefox = { enable = true; };
+
+    nix-ld = {
       enable = true;
+      package = pkgs.nix-ld-rs;
+      libraries = with pkgs; [
+        krb5
+        polkit
+        python3
+        libgcc
+        alsa-lib
+        at-spi2-atk
+        at-spi2-core
+        atk
+        cairo
+        cups
+        curl
+        dbus
+        expat
+        fontconfig
+        freetype
+        fuse3
+        gdk-pixbuf
+        glib
+        glibc
+        gtk3
+        gtk4
+        icu
+        libGL
+        libappindicator-gtk3
+        libdrm
+        jsoncpp
+        libglvnd
+        libnotify
+        libpulseaudio
+        libunwind
+        libusb1
+        libuuid
+        libxkbcommon
+        libxml2
+        mesa
+        nspr
+        nss
+        openssl
+        pango
+        pipewire
+        stdenv.cc.cc
+        systemd
+        vulkan-loader
+        xorg.libX11
+        xorg.libXScrnSaver
+        xorg.libXcomposite
+        xorg.libXcursor
+        xorg.libXdamage
+        xorg.libXext
+        xorg.libXfixes
+        xorg.libXi
+        xorg.libXrandr
+        xorg.libXrender
+        xorg.libXtst
+        xorg.libxcb
+        xorg.libxkbfile
+        xorg.libxshmfence
+        zlib
+      ];
     };
   };
 
@@ -255,22 +270,14 @@
   };
 
   virtualisation = {
-    libvirtd = {
-      enable = true;
-    };
+    libvirtd = { enable = true; };
 
-    containers = {
-      enable = true;
-    };
+    containers = { enable = true; };
 
     podman = {
       enable = true;
       dockerCompat = true;
-      defaultNetwork = {
-        settings = {
-          dns_enabled = true;
-        };
-      };
+      defaultNetwork = { settings = { dns_enabled = true; }; };
     };
   };
 
@@ -320,22 +327,12 @@
       hunspellDicts.de_AT
     ];
 
-    sessionVariables = {
-      FLAKE = "/config";
-    };
+    sessionVariables = { FLAKE = "/config"; };
   };
 
-  fonts = {
-    packages = with pkgs; [
-      nerdfonts
-    ];
-  };
+  fonts = { packages = with pkgs; [ nerdfonts ]; };
 
-  nix = {
-    settings = {
-      experimental-features = [ "nix-command" "flakes" ];
-    };
-  };
+  nix = { settings = { experimental-features = [ "nix-command" "flakes" ]; }; };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

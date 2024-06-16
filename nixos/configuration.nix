@@ -285,6 +285,7 @@
   # $ nix search wget
   environment = {
     systemPackages = with pkgs; [
+      davinci-resolve
       home-manager
       libtool
       pciutils

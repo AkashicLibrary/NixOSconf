@@ -286,9 +286,54 @@
   environment = {
     systemPackages = with pkgs; [
       home-manager
+      libtool
+      pciutils
+      krb5
+      wmctrl
       ispell
+      mangohud
+      discord
+      maven
+      gnupg
+      pass
+      git-credential-manager
+      prismlauncher
+      floorp
+      godot_4
+      godot_4-export-templates
+      jamesdsp
+      spotify
+      nix-index
+      ani-cli
+      polkit
+      supergfxctl
+      libglvnd
+      libGL
+      gtk3
+      gtk4
+      zlib-ng
+      vivaldi
+      hyfetch
+      fastfetch
+      tree
+      unnethack
+      oh-my-zsh
+      python3
+      tree-sitter
+      eza
+      libgcc
+      gcc
+      unzip
+      lazygit
+      distrobox
+      podman-tui
+      docker-compose
+      timeshift
+      btop
+      obsidian
+      lua
+      luajit
       texliveFull
-      hunspell
       xdotool
       xclip
       nixfmt-classic
@@ -323,8 +368,10 @@
       emacsPackages.editorconfig
       xorg.xwininfo
       python312Packages.argcomplete
-      hunspellDicts.en_US
-      hunspellDicts.de_AT
+      python312Packages.pygame
+      kdePackages.discover
+      kdePackages.partitionmanager
+      libsForQt5.polonium
     ];
 
     sessionVariables = { FLAKE = "/config"; };
